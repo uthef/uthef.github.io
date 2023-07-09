@@ -19,7 +19,7 @@ html, body {
     position: absolute;
     background: url("lost_soul.png");
     background-position: center;
-    background-size: 100%;
+    background-size: contain;
     background-repeat: no-repeat;
     max-width: 1024px;
     max-height: 1024px;
