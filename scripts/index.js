@@ -1,10 +1,6 @@
-async function contactAPI() {
-    var response = await fetch("https://api.uthef.icu/");
-    var jsonData = await response.json();
-    return jsonData;
-}
+let api = new UthefAPI();
 
-contactAPI().then(function(data) {
+api.fetch().then(function(data) {
     console.log("API Python version: " + data["python_version"]);
     console.log("Current date: " + data["date"]);
 }).catch(function(reason) {
