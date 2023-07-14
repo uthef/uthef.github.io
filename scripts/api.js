@@ -1,5 +1,5 @@
 async function contactAPI() {
-    var response = await fetch("https://dsss.new/");
+    var response = await fetch("https://api.uthef.icu/");
     var jsonData = await response.json();
     return jsonData;
 }
