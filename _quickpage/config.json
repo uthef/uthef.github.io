@@ -1,0 +1,11 @@
+{
+   "relWorkDir": "_src",
+   "relOutputDir": "quickpage-output",
+   "formatterOptions": {
+      "parser": "html",
+      "bracketSameLine": true,
+      "bracketSpacing": false,
+      "printWidth": 700,
+      "useTabs": true
+   }
+}
