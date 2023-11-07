@@ -16,7 +16,7 @@
 		<meta name="msapplication-config" content="icons/browserconfig.xml">
 		<meta name="theme-color" content="#ffffff">
         <script src="https://kit.fontawesome.com/c62885bac5.js" crossorigin="anonymous"></script>
-        {% if page.public == true %}
+        {% if page.public %}
 		<meta name="description" content="Someday something will be here">
 		<meta name="keywords" content="joseph brylski, uthef, UTHEF, uthef project, den brylski">
 		<meta property="og:title" content="Uthef">
@@ -24,7 +24,7 @@
 		<meta property="og:description" content="Someday something will be here">
         {% endif %}
 		<title>{{ page.title }} - Uthef</title>
-        {% if page.api == true %}
+        {% if page.api %}
 		<script src="scripts/uthefapi.js"></script>
         {% endif %}
 	</head>
@@ -47,7 +47,7 @@
 				<span class="var1">© 2023 UTHEF</span>
 			</div>
 		</div>
-        {% if page.api == true %}
+        {% if page.api %}
 		<script src="scripts/index.js"></script>
         {% endif %}
 	</body>
