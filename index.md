@@ -1,5 +1,5 @@
 ---
-	layout: base
+	layout: default
 	api: true
 	public: true
 ---
