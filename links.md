@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Links
 ---
 
 <div id="abs-block">

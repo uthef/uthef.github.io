@@ -1,5 +1,6 @@
 ---
-	layout: default
-	api: true
-	public: true
+layout: default
+api: true
+public: true
+title: Lost Soul
 ---
