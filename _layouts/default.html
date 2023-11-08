@@ -23,7 +23,11 @@
 		<meta property="og:image" content="/media/lost_soul.png">
 		<meta property="og:description" content="Someday something will be here">
         {% endif %}
+		{% if page.title %}
 		<title>{{ page.title }} - Uthef</title>
+		{% else %}
+		<title>Uthef</title>
+		{% endif %}
         {% if page.api %}
 		<script src="scripts/uthefapi.js"></script>
         {% endif %}
