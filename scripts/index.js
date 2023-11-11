@@ -17,7 +17,8 @@ async function testApi() {
 
     output += "Current date: " + dateUtc.toLocaleDateString() + "\n";
     output += "Request IP: " + data["request_ip"] + "\n";
-    output += "Local time: " + dateUtc.toTimeString();
+    output += "Local time: " + dateUtc.toTimeString() + "\n";
+    output += "Server uptime: " + data["uptime"];
 
     console.info(output);
 }
