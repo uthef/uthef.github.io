@@ -4,5 +4,5 @@ title: Links
 ---
 
 <div id="abs-block">
-	<span>No links</span>
+	<span>No links (for now)</span>
 </div>
