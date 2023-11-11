@@ -1,4 +1,5 @@
-const API_BASE_URL = "https://api.uthef.icu/";
+const addr = { dev: "http://localhost:3000", prod: "https://api.uthef.icu" };
+const API_BASE_URL = addr.prod;
 
 class UthefAPI {
     async fetch() {
