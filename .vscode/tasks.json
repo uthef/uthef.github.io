@@ -5,8 +5,7 @@
             "label": "startJekyll",
             "command": "jekyll",
             "args": ["serve"],
-            "type": "shell",
-
+            "type": "shell"
         }
     ]
 }
