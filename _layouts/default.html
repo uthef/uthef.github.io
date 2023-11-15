@@ -38,17 +38,15 @@
         {{ content }}
 		<div id="floating-block">
 			<div>
-				<a href="https://t.me/uthef" target="_blank">
-					<i class="fa-brands fa-telegram"></i>
-					<span>Telegram</span>
-				</a>
-				<a href="mailto:joe@uthef.icu" target="_blank">
-					<i class="fa-solid fa-envelope"></i>
-					<span>joe@uthef.icu</span>
-				</a>
+				{% for item in site.data.social %}
+					<a href="{{ item.link }}" target="_blank">
+						<i class="{{ item.icon }}"></i>
+						<span>{{ item.name }}</span>
+					</a>
+				{% endfor %}
 			</div>
 			<div id="copyright">
-				<span class="var1">© 2023 UTHEF</span>
+				<span class="var1">© {{ site.time | date: "%Y" }} UTHEF</span>
 			</div>
 		</div>
         {% if page.api %}

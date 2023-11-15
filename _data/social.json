@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Telegram",
+        "link": "https://t.me/uthef",
+        "icon": "fa-brands fa-telegram"
+    },
+    {
+        "name": "joe@uthef.icu",
+        "link": "mailto:joe@uthef.icu",
+        "icon": "fa-solid fa-envelope"
+    }
+]
