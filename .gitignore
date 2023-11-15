@@ -1,2 +1,5 @@
-jekyll.exe
 _site
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+

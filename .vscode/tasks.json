@@ -1,0 +1,12 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "startJekyll",
+            "command": "jekyll",
+            "args": ["serve"],
+            "type": "shell",
+
+        }
+    ]
+}
