@@ -7,6 +7,9 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     background-color: #000000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
