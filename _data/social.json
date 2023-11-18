@@ -8,5 +8,10 @@
         "name": "joe@uthef.icu",
         "link": "mailto:joe@uthef.icu",
         "icon": "fa-solid fa-envelope"
+    },
+    {
+        "name": "Discord",
+        "link": "https://discord.com/users/679053881749012511",
+        "icon": "fa-brands fa-discord"
     }
 ]

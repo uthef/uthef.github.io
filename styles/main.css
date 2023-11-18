@@ -92,6 +92,10 @@ li {
     padding: 8px;
 }
 
+#floating-block .link {
+    display: inline-block;
+}
+
 .var1 {
     font-size: 14px;
     font-weight: bold;

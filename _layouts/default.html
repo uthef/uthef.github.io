@@ -37,14 +37,14 @@
 		<div id="fog"></div>
         {{ content }}
 		<div id="floating-block">
-			<div>
-				{% for item in site.data.social %}
+			{% for item in site.data.social %}
+				<div class="link">
 					<a href="{{ item.link }}" target="_blank">
 						<i class="{{ item.icon }}"></i>
 						<span>{{ item.name }}</span>
 					</a>
-				{% endfor %}
-			</div>
+				</div>
+			{% endfor %}
 			<div id="copyright">
 				<span class="var1">© {{ site.time | date: "%Y" }} UTHEF</span>
 			</div>
