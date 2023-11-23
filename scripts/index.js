@@ -1,3 +1,19 @@
+class UthefAPI {
+    _addr;
+    _apiBaseUrl;
+
+    constructor() {
+        this._addr = { dev: "http://localhost:3000", prod: "https://api.uthef.icu" };
+        this._apiBaseUrl = this._addr.prod;
+    }
+
+    async fetch() {
+        var response = await fetch(this._apiBaseUrl);
+        var jsonData = await response.json();
+        return jsonData;
+    }
+}
+
 let api = new UthefAPI();
 
 async function testApi() {
