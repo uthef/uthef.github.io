@@ -10,6 +10,11 @@
         "icon": "fa-brands fa-discord"
     },
     {
+        "name": "Instagram",
+        "link": "https://instagram.com/uthef",
+        "icon": "fa-brands fa-instagram"
+    },
+    {
         "name": "joe@uthef.icu",
         "link": "mailto:joe@uthef.icu",
         "icon": "fa-solid fa-envelope"
