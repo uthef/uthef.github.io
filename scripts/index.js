@@ -3,7 +3,7 @@ class UthefAPI {
     _apiBaseUrl;
 
     constructor() {
-        this._addr = { dev: "http://localhost:3000", prod: "https://api.uthef.icu" };
+        this._addr = { dev: "http://localhost:3000", prod: "https://api-drab-five-66.vercel.app" };
         this._apiBaseUrl = this._addr.prod;
     }
 
