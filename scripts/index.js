@@ -17,10 +17,37 @@ class UthefAPI {
         }
     }
 
+    async fetchJson(endpoint) {
+        let request = new XMLHttpRequest();
+        request.timeout = 3000;
+
+        request.open("get", this.apiBaseUrl + endpoint);
+        request.send();
+
+        let promise = new Promise((resolve, reject) => {
+            request.onload = (e) => {
+                if (request.status !== 200) {
+                    reject("Unexpected status code: " + request.status);
+                    return;
+                }
+
+                resolve(JSON.parse(request.response));
+            };
+
+            request.ontimeout = (e) => {
+                reject("Request timeout");
+            };
+
+            request.onerror = (e) => {
+                reject(e);
+            };
+        });
+
+        return promise;
+    }
+
     async fetchStats() {
-        var response = await fetch(this.apiBaseUrl + "/stats");
-        var jsonData = await response.json();
-        return jsonData;
+        return await this.fetchJson("/stats");
     }
 
     isDevEnv() {
@@ -67,8 +94,8 @@ class UthefAPI {
 
 const api = new UthefAPI();
 
-api.logStats().then((success) => {
-    if (!success && !api.isDevEnv()) {
+api.logStats().then((ok) => {
+    if (!ok && !api.isDevEnv()) {
         api.switchToFallbackAddress();
         api.logStats();
     }
