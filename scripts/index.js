@@ -1,42 +1,75 @@
 class UthefAPI {
-    _addr;
-    _apiBaseUrl;
+    #addr;
+    #apiBaseUrl;
 
     constructor() {
-        this._addr = { dev: "http://localhost:3000", prod: "https://api-drab-five-66.vercel.app" };
-        this._apiBaseUrl = this._addr.prod;
+        this.addr = { 
+            dev: "http://localhost:3000", 
+            prod: "https://api.uthef.icu",
+            prodFallback: "https://api-drab-five-66.vercel.app"
+        };
+
+        if (this.isDevEnv()) {
+            this.apiBaseUrl = this.addr.dev;
+        }
+        else {
+            this.apiBaseUrl = this.addr.prod;
+        }
     }
 
-    async fetch() {
-        var response = await fetch(this._apiBaseUrl);
+    async fetchStats() {
+        var response = await fetch(this.apiBaseUrl + "/stats");
         var jsonData = await response.json();
         return jsonData;
     }
-}
 
-let api = new UthefAPI();
-
-async function testApi() {
-    let data;
-
-    try {
-        data = await api.fetch();
-    } catch (reason) {
-        console.error("Unable to reach API");
-        console.error(reason);
-
-        return;
+    isDevEnv() {
+        const hostname = window.location.hostname;
+        return hostname === "localhost" || hostname === "127.0.0.1";
     }
 
-    let output = "Node version: " + data["node_version"] + "\n";
-    let dateUtc = new Date(Date.parse(data["date_utc"]));
+    switchToFallbackAddress() {
+        this.apiBaseUrl = this.addr.prodFallback;
+    }
 
-    output += "Current date: " + dateUtc.toLocaleDateString() + "\n";
-    output += "Request IP: " + data["request_ip"] + "\n";
-    output += "Local time: " + dateUtc.toTimeString() + "\n";
-    output += "Server uptime: " + data["uptime"];
+    async logStats() {
+        let data = null;
 
-    console.info(output);
+        try {
+            data = await this.fetchStats();
+        } 
+        catch (reason) {
+            console.error("Unable to reach API");
+            console.error(reason);
+
+            return false;
+        }
+
+        if (data === null) return false;
+        
+        let output = "Node version: " + data.nodeVersion + "\n";
+        let dateUtc = new Date(Date.parse(data.dateUtc));
+
+        if ("uptime" in data) {
+            output += "Server uptime: " + data.uptime + "\n";
+        }
+
+        output += "Current date: " + dateUtc.toLocaleDateString() + "\n";
+        output += "Local time: " + dateUtc.toTimeString() + "\n";
+        output += "Request IP: " + data.requestIp + "\n";
+        output += "User Agent: " + data.userAgent;
+
+        console.info(output);
+
+        return true;
+    }
 }
 
-testApi();
+const api = new UthefAPI();
+
+api.logStats().then((success) => {
+    if (!success && !api.isDevEnv()) {
+        api.switchToFallbackAddress();
+        api.logStats();
+    }
+});
