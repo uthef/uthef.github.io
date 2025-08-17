@@ -19,7 +19,7 @@ class UthefAPI {
 
     async fetchJson(endpoint) {
         let request = new XMLHttpRequest();
-        request.timeout = 3000;
+        request.timeout = 6000;
 
         request.open("get", this.apiBaseUrl + endpoint);
         request.send();
