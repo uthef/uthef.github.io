@@ -6,7 +6,7 @@ class UthefAPI {
         this.addr = { 
             dev: "http://localhost:3000", 
             prod: "https://api.uthef.icu",
-            prodFallback: "https://api-drab-five-66.vercel.app"
+            prodFallback: "https://uthef.vercel.app"
         };
 
         if (this.isDevEnv()) {
