@@ -108,7 +108,7 @@ function afterRequest(data) {
 
 if (Math.random() <= 0.001) {
     let comp = document.getElementById("comp");
-    comp.src = "media/easter_egg.mp4";
+    comp.src = "media/easter_egg.webm";
     comp.style.display = "block";
 
     document.body.removeChild(document.getElementById("artwork"));
