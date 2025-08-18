@@ -59,6 +59,10 @@ class UthefAPI {
         this.apiBaseUrl = this.addr.prodFallback;
     }
 
+    isFallback() {
+        return this.apiBaseUrl === this.addr.prodFallback;
+    }
+
     async logStats() {
         let data = null;
 
@@ -69,10 +73,10 @@ class UthefAPI {
             console.error("Unable to reach API");
             console.error(reason);
 
-            return false;
+            return null;
         }
 
-        if (data === null) return false;
+        if (data === null) return null;
         
         let output = "Node version: " + data.nodeVersion + "\n";
         let dateUtc = new Date(Date.parse(data.dateUtc));
@@ -88,15 +92,25 @@ class UthefAPI {
 
         console.info(output);
 
-        return true;
+        return data;
     }
 }
 
 const api = new UthefAPI();
+api.logStats().then(afterRequest);
 
-api.logStats().then((ok) => {
-    if (!ok && !api.isDevEnv()) {
+function afterRequest(data) {
+    if (data == null && !api.isDevEnv() && !api.isFallback()) {
         api.switchToFallbackAddress();
-        api.logStats();
+        api.logStats().then(afterRequest);
     }
-});
+}
+
+if (Math.random() <= 0.001) {
+    let comp = document.getElementById("comp");
+    comp.src = "media/easter_egg.mp4";
+    comp.style.display = "block";
+
+    document.body.removeChild(document.getElementById("artwork"));
+    document.body.removeChild(document.getElementById("fog"));
+}
