@@ -106,7 +106,21 @@ function afterRequest(data) {
     }
 }
 
-if (Math.random() <= 0.001) {
+function hasQueryParam(param) {
+    let query = window.location.search;
+    if (query.startsWith("?")) query = query.replace("?", "");
+
+    let pairs = query.split("&");
+
+    for (let i = 0; i < pairs.length; i++) {
+        let pair = pairs[i];
+        if (pair.startsWith(param + "=") || pair == param) return true;
+    }
+
+    return false;
+}
+
+if (Math.random() <= 0.001 || hasQueryParam("spookyMode")) {
     let comp = document.getElementById("comp");
     comp.src = "media/easter_egg.webm";
     comp.style.display = "block";
