@@ -13,6 +13,6 @@ title: Links
 			{% endfor %}
 		</ul>
 	{% else %}
-		<span>No links (for now)</span>
+		<span>No links</span>
 	{% endif %}
 </div>
